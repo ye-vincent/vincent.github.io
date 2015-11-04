@@ -1,6 +1,6 @@
 
  <!DOCTYPE HTML>
-<html lang="chinese">
+<html >
 <head>
   <meta charset="UTF-8">
   <meta name="baidu_union_verify" content="d1952c66cf48912e21c18c7c581f382a">
@@ -82,7 +82,7 @@
     </p>
   <p class="article-time">
     <time datetime="2015-11-04T00:55:29.000Z" itemprop="datePublished">2015-11-04</time>
-    更新日期:<time datetime="2015-11-04T05:12:42.367Z" itemprop="dateModified">2015-11-04</time>
+    更新日期:<time datetime="2015-11-04T05:59:42.292Z" itemprop="dateModified">2015-11-04</time>
     
   </p>
 </header>
@@ -91,25 +91,24 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目錄</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#浅谈移动前端优化"><span class="toc-number">1.</span> <span class="toc-text">浅谈移动前端优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#移动设备表现性能的三种影响因素"><span class="toc-number">1.0.1.</span> <span class="toc-text">移动设备表现性能的三种影响因素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#See_your_changes_instantly_with_LivePreview"><span class="toc-number">1.0.2.</span> <span class="toc-text">See your changes instantly with LivePreview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Make_it_your_own"><span class="toc-number">1.0.3.</span> <span class="toc-text">Make it your own</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A_robust_editor_for_advanced_Markdown_users"><span class="toc-number">1.0.4.</span> <span class="toc-text">A robust editor for advanced Markdown users</span></a></li></ol></li></ol></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#浅谈移动前端优化"><span class="toc-number">1.</span> <span class="toc-text">浅谈移动前端优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#移动设备表现性能的三种影响因素"><span class="toc-number">1.1.</span> <span class="toc-text">移动设备表现性能的三种影响因素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#究竟什么样的页面是需要优化的页面？"><span class="toc-number">1.2.</span> <span class="toc-text">究竟什么样的页面是需要优化的页面？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重复优化的思考"><span class="toc-number">1.3.</span> <span class="toc-text">重复优化的思考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到的问题"><span class="toc-number">1.4.</span> <span class="toc-text">遇到的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消灭冗余"><span class="toc-number">1.5.</span> <span class="toc-text">消灭冗余</span></a></li></ol></li></ol>
 		</div>
 		
 		<h1 id="浅谈移动前端优化">浅谈移动前端优化</h1><p>随着<strong>Html5</strong>的正式定稿，移动前端步入APP世界的步伐也随之加速。目前主流的两大手机系统厂商（google、苹果）都是Html5的参与者，所以这两大系统在对html5的支持上基本是没什么问题的。移动流量正在迅速增长。对许多消费者而言，他们的手机或者平板设备已经成为他们浏览网络的主要入口了，但是其性能表现却差强人意。</p>
-<h3 id="移动设备表现性能的三种影响因素">移动设备表现性能的三种影响因素</h3><ol>
+<h2 id="移动设备表现性能的三种影响因素">移动设备表现性能的三种影响因素</h2><ol>
 <li><p><strong>网页比以前更大。</strong>根据HTTP Archive网站的分析，现在平均的一个web页面需要加载超过1MB的数据，其中包含有图片，Javascript，CSS（Cascading Style Sheets）等。更大的网页会影响桌面PC的显示性能。对于移动端的性能 — 特别是3G环境下的性能 — 影响更严重。这个影响会在今后的三年更加明显。以现在的页面增长速度来说，到2015年，平均的页面大小会达到2MB。</p>
 </li>
 <li><p><strong>延迟相差巨大。</strong>移动端的延迟性唯一不变的就是延迟时间永远是不定的，即使是在同一个地点，每次的延迟都是不定的。这是由于大量的数据是通过信息塔进行传输的。因此诸如天气，甚至是持有者所面向的方向都有可能成为影响因素。</p>
 </li>
 <li><strong>下载速度相差巨大。</strong>3G环境比平均带宽慢了15倍，而LTE却能达到平均带宽的2倍那么快。</li>
 </ol>
-<p>###究竟什么样的页面是需要优化的页面？###</p>
-<ol>
+<h2 id="究竟什么样的页面是需要优化的页面？">究竟什么样的页面是需要优化的页面？</h2><ol>
 <li>页面上下滑动时感觉卡顿不流畅或是基本不动；</li>
 <li>动画效果卡顿，看上去感觉一帧一帧的跳动；</li>
 <li>页面加载时空白时间超过5-8秒的；</li>
 </ol>
 <p>简单点说，就是感觉卡。也许iphone6不卡但是iphone4上会卡，也许iphone上不卡三星上感觉卡、魅族、小米、华为、联想？国内屌丝机各有个的长相各有各的特色，比如魅族的MX，其他手机都很正常的时候它就卡。Html兼容一直都不是一件容易的事。</p>
-<p>###重复优化的思考###<br>基本上几个字就能说清楚：</p>
+<h2 id="重复优化的思考">重复优化的思考</h2><p>基本上几个字就能说清楚：</p>
 <blockquote>
 <p>传输层面：减少请求数，降低请求量<br>执行层面：减少重绘&amp;回流</p>
 </blockquote>
@@ -142,7 +141,7 @@
 <li>CDN  </li>
 </ul>
 <p>可以看到，我们所做的优化都是在减少请求数，降低请求量，减小传输时的耗时，或者通过一个策略，优先加载首屏渲染所需资源，而后再加载交互所需资源（比如点击时候再加载UI组件）</p>
-<p>###遇到的问题###<br>有一些网站初期比较快，但是随着量的积累，BUG越来越多，速度也越来越慢，一些前端会使用上述优化手段做优化，但是收效甚微，一个比较典型的例子就是代码冗余：  </p>
+<h2 id="遇到的问题">遇到的问题</h2><p>有一些网站初期比较快，但是随着量的积累，BUG越来越多，速度也越来越慢，一些前端会使用上述优化手段做优化，但是收效甚微，一个比较典型的例子就是代码冗余：  </p>
 <ul>
 <li>之前的CSS全部放在了一个文件中，新一轮的UI样式优化，新老CSS难以拆分，CSS体量会增加，如果有业务团队使用了公共样式，情况更不容乐观；</li>
 <li>UI组件更新，但是如果有业务团队脱离接口操作了组件DOM，将导致新组件DOM更新受限，最差的情况下，用户会加载两个组件的代码；  </li>
@@ -155,17 +154,13 @@
 <li>第三方库泛滥，且难以维护，有BUG也改不了；  </li>
 <li>业务代码加载大量异步模块资源，页面请求数增多；  </li>
 </ol>
-<h3 id="See_your_changes_instantly_with_LivePreview">See your changes instantly with LivePreview</h3><p>Don’t guess if your <a href="http://markdownpad.com" target="_blank" rel="external">hyperlink syntax</a> is correct; LivePreview will show you exactly what your document looks like every time you press a key.</p>
-<h3 id="Make_it_your_own">Make it your own</h3><p>Fonts, color schemes, layouts and stylesheets are all 100% customizable so you can turn MarkdownPad into your perfect editor.</p>
-<h3 id="A_robust_editor_for_advanced_Markdown_users">A robust editor for advanced Markdown users</h3><p>MarkdownPad supports multiple Markdown processing engines, including standard Markdown, Markdown Extra (with Table support) and GitHub Flavored Markdown.</p>
-<p>With a tabbed document interface, PDF export, a built-in image uploader, session management, spell check, auto-save, syntax highlighting and a built-in CSS management interface, there’s no limit to what you can do with MarkdownPad.</p>
-  
+<h2 id="消灭冗余">消灭冗余</h2>  
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/前端，移动，优化/">前端，移动，优化</a>
+  <span></span> <a href="/tags/优化/">优化</a><a href="/tags/前端/">前端</a>
   </div>
 
 
@@ -193,7 +188,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目錄</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#浅谈移动前端优化"><span class="toc-number">1.</span> <span class="toc-text">浅谈移动前端优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#移动设备表现性能的三种影响因素"><span class="toc-number">1.0.1.</span> <span class="toc-text">移动设备表现性能的三种影响因素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#See_your_changes_instantly_with_LivePreview"><span class="toc-number">1.0.2.</span> <span class="toc-text">See your changes instantly with LivePreview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Make_it_your_own"><span class="toc-number">1.0.3.</span> <span class="toc-text">Make it your own</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A_robust_editor_for_advanced_Markdown_users"><span class="toc-number">1.0.4.</span> <span class="toc-text">A robust editor for advanced Markdown users</span></a></li></ol></li></ol></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#浅谈移动前端优化"><span class="toc-number">1.</span> <span class="toc-text">浅谈移动前端优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#移动设备表现性能的三种影响因素"><span class="toc-number">1.1.</span> <span class="toc-text">移动设备表现性能的三种影响因素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#究竟什么样的页面是需要优化的页面？"><span class="toc-number">1.2.</span> <span class="toc-text">究竟什么样的页面是需要优化的页面？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重复优化的思考"><span class="toc-number">1.3.</span> <span class="toc-text">重复优化的思考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到的问题"><span class="toc-number">1.4.</span> <span class="toc-text">遇到的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消灭冗余"><span class="toc-number">1.5.</span> <span class="toc-text">消灭冗余</span></a></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
@@ -219,7 +214,9 @@
 	<p class="asidetitle">標簽</p>
 		<ul class="clearfix">
 		
-			<li><a href="/tags/前端，移动，优化/" title="前端，移动，优化">前端，移动，优化<sup>1</sup></a></li>
+			<li><a href="/tags/优化/" title="优化">优化<sup>1</sup></a></li>
+		
+			<li><a href="/tags/前端/" title="前端">前端<sup>1</sup></a></li>
 		
 		</ul>
 </div>
@@ -229,7 +226,7 @@
   <p class="asidetitle">友情鏈接</p>
     <ul>
       <li><a href="http://hexo.io" target="_blank" title="Hexo">Hexo</a></li>
-      <li><a href="http://gengbiao.me" target="_blank" title="coney">coney's Blog</a></li>
+     
     </ul>
 </div>
 
@@ -242,7 +239,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">標簽雲</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/前端，移动，优化/" style="font-size: 10px;">前端，移动，优化</a>
+       <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a>
     </div>
   </div>
 
