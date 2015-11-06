@@ -46,7 +46,7 @@
 				<h1 class="site-name"><a href="/" title="Ye-Vincent&#39;Blog">Ye-Vincent&#39;Blog</a></h1>
 				<a class="blog-motto">努力学代码，退休后天天打魔兽</a>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -60,7 +60,7 @@
 					
                                             <form class="search" action=http://zhannei.baidu.com/cse/search target="_blank">
                                             <label>Search</label>
-                                        <input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="Search"><br>
+                                        <input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
 					
 					</li>
 				</ul>
@@ -81,8 +81,8 @@
       <a href="http://yoursite.com" title="叶文翔">叶文翔</a>
     </p>
   <p class="article-time">
-    <time datetime="2015-11-06T11:57:30.035Z" itemprop="datePublished">2015-11-06</time>
-    Updated:<time datetime="2015-11-06T11:57:30.035Z" itemprop="dateModified">2015-11-06</time>
+    <time datetime="2015-11-06T12:10:15.116Z" itemprop="datePublished">2015-11-06</time>
+    更新日期:<time datetime="2015-11-06T12:10:15.116Z" itemprop="dateModified">2015-11-06</time>
     
   </p>
 </header>
@@ -90,7 +90,7 @@
 		
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目錄</strong>
 		
 		</div>
 		
@@ -114,15 +114,11 @@
     // 展示到前台页面
 }</span>)</span><span class="list">()</span>
 </code></pre><p>而ng呢  看起来则优雅得多了</p>
-<pre><code><span class="xml"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">data-ng-repeat</span>=<span class="value">"item in datas"</span>&gt;</span>
+<pre><code><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">data-ng-repeat</span>=<span class="value">"item in datas"</span>&gt;</span>
     <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="comment"></span> + <span class="comment"></span> + <span class="comment"></span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
 <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
-
-var app = angular.module('demo', []).controller('demoController', function ($scope) </span><span class="expression">{
-/<span class="end-block">/ViewModel</span>双向绑定
-$<span class="variable">scope.datas</span> = [{<span class="variable">color</span>:<span class="string">"blue"</span>,<span class="variable">size</span>:<span class="string">"small"</span>,<span class="variable">shape</span>:<span class="string">"circle"</span>}</span><span class="xml">];
-});</span>
-</code></pre><p>MVVM的核心思想是：不再关注数据是如何呈现到页面的，由框架更新Model和View。</p>
+</code></pre><p>var app = angular.module(‘demo’, []).controller(‘demoController’, function ($scope) {<br>//ViewModel双向绑定<br>$scope.datas = [{color:”blue”,size:”small”,shape:”circle”}];<br>});</p>
+<p>MVVM的核心思想是：不再关注数据是如何呈现到页面的，由框架更新Model和View。</p>
 <p>ng也提供了自定义的ViewModel： directive(指令) ，代码如下：</p>
 <pre><code><span class="doctype">&lt;!DOCTYPE html&gt;</span>
 <span class="tag">&lt;<span class="title">html</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/1999/xhtml"</span> <span class="attribute">data-ng-app</span>=<span class="value">"demo"</span>&gt;</span>
@@ -216,15 +212,15 @@ $<span class="variable">scope.datas</span> = [{<span class="variable">color</spa
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目錄</strong>
   
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 <div id="authorInfo">
 	
@@ -243,7 +239,7 @@ $<span class="variable">scope.datas</span> = [{<span class="variable">color</spa
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">標簽</p>
 		<ul class="clearfix">
 		
 			<li><a href="/tags/angular/" title="angular">angular<sup>1</sup></a></li>
@@ -257,7 +253,7 @@ $<span class="variable">scope.datas</span> = [{<span class="variable">color</spa
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情鏈接</p>
     <ul>
       <li><a href="http://hexo.io" target="_blank" title="Hexo">Hexo</a></li>
      
@@ -266,12 +262,12 @@ $<span class="variable">scope.datas</span> = [{<span class="variable">color</spa
 
 
   <div class="rsspart">
-	<a href="atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="atom.xml" target="_blank" title="rss">RSS 訂閱</a>
 </div>
 
   
   <div class="tagcloudlist">
-    <p class="asidetitle">Tag Cloud</p>
+    <p class="asidetitle">標簽雲</p>
     <div class="tagcloudlist clearfix">
        <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/前端/" style="font-size: 20px;">前端</a>
     </div>
