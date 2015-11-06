@@ -1,0 +1,503 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <meta name="baidu_union_verify" content="d1952c66cf48912e21c18c7c581f382a">
+  <meta name="360-site-verification" content="67fbcc5a67f4c65c057315b28fa0b2c8" />
+<meta name="google-site-verification" content="2GzxQ0VtXwTSUdmGm6DzcmhTzM_I9QmzCb_pzpMzD88" />
+  
+    <title>MVVM框架之AngularJs | Ye-Vincent&#39;Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="叶文翔">
+    
+    <meta name="description" content="近年，前端的需求越来越重，过去后端的处理大多数都转移到了前端，而JavaScript也十分争气，发展得如火如荼。过去的JavaScript只是在页面上搞一些炫丽的特效，而现在已经成了数据展现、加工的主力军，所以，前端MV框架如雨后春笋般冒了出来。有大神说，MV模式只是工具，目的是实现代码重用、模块化">
+    
+    
+    
+    
+    <link rel="alternate" href="atom.xml" title="Ye-Vincent&#39;Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            var _bdId ='391982416296a0d54221f59fe35250d4';
+             hm.src = "//hm.baidu.com/hm.js?" + _bdId;
+             var s = document.getElementsByTagName("script")[0]; 
+             s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+     
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Ye-Vincent&#39;Blog">Ye-Vincent&#39;Blog</a></h1>
+				<a class="blog-motto">努力学代码，退休后天天打魔兽</a>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+					
+                                            <form class="search" action=http://zhannei.baidu.com/cse/search target="_blank">
+                                            <label>Search</label>
+                                        <input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="Search"><br>
+					
+					</li>
+				</ul>
+                            </nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/11/06/MVVM框架之AngularJs/" title="MVVM框架之AngularJs" itemprop="url">MVVM框架之AngularJs</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="叶文翔">叶文翔</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-11-06T11:57:30.035Z" itemprop="datePublished">2015-11-06</time>
+    Updated:<time datetime="2015-11-06T11:57:30.035Z" itemprop="dateModified">2015-11-06</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<p>近年，前端的需求越来越重，过去后端的处理大多数都转移到了前端，而JavaScript也十分争气，发展得如火如荼。过去的JavaScript只是在页面上搞一些炫丽的特效，而现在已经成了数据展现、加工的主力军，所以，前端MV<em>框架如雨后春笋般冒了出来。<br>有大神说，MV</em>模式只是工具，目的是实现代码重用、模块化。其中心思想很一致：UI和逻辑分离，提取数据模型。</p>
+<p><strong>Model View Controller - MVC</strong><br>M：数据展现的对象模型<br>V: ui,在web中就是html<br>C: 处理、加工Model</p>
+<p>工作模型应该是  Controller=&gt;Model=&gt;View<br><img src="http://vincentye.duapp.com/net-img/mvc.png" alt=""></p>
+<p><strong>Model View ViewModel - MVVM</strong><br>M:数据展现的对象模型<br>V：页面UI<br>ViewModel: 视图模型，实现Model和View的双向绑定</p>
+<p>工作模型应该是 ： Model&lt;=&gt;ViewModel&lt;=&gt;View<br><img src="http://vincentye.duapp.com/net-img/mvvm.png" alt=""><br>那么问题来了，MVVC里的controllor在哪里？<br>学习了angular后就知道，它提供了名为Controller的方法，它的作用和MVC中一样，都是去处理Model。  </p>
+<p><strong>ViewModel</strong><br>初次看到ng让我很不适应，毕竟它颠覆了DOM的操作方式，一般来说，某个页面拿到数据之后，要么封装为一个模块，要是写一个方法展示到页面上，比如：   </p>
+<pre><code>    <span class="list">(<span class="keyword">function</span><span class="list">()</span><span class="collection">{
+    var data = <span class="collection">[<span class="collection">{color:<span class="string">"blue"</span>,size:<span class="string">"small"</span>,shape:<span class="string">"circle"</span>}</span>]</span>,
+        html = <span class="collection">[<span class="string">"&lt;ul&gt;"</span>]</span>,
+        $wrapper = $<span class="list">(<span class="string">"#wrapper"</span>)</span><span class="comment">;</span>
+
+    data.forEach<span class="list">(<span class="keyword">function</span><span class="list">(<span class="keyword">item</span>)</span><span class="collection">{
+        html.push<span class="list">(<span class="keyword">'&lt;li&gt;'</span>,item.color,<span class="string">"+"</span>,item.size,<span class="string">"+"</span>,item.shape)</span><span class="comment">;</span>
+    }</span>)</span><span class="comment">;</span>
+    html.puch<span class="list">(<span class="string">"&lt;/ul&gt;"</span>)</span><span class="comment">;</span>
+    // html拼接
+    $wrapper.html<span class="list">(<span class="keyword">html.join</span><span class="list">(<span class="keyword">'</span> ')</span>)</span><span class="comment">;</span>
+    // 展示到前台页面
+}</span>)</span><span class="list">()</span>
+</code></pre><p>而ng呢  看起来则优雅得多了</p>
+<pre><code><span class="xml"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">data-ng-repeat</span>=<span class="value">"item in datas"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="comment"></span> + <span class="comment"></span> + <span class="comment"></span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+
+var app = angular.module('demo', []).controller('demoController', function ($scope) </span><span class="expression">{
+/<span class="end-block">/ViewModel</span>双向绑定
+$<span class="variable">scope.datas</span> = [{<span class="variable">color</span>:<span class="string">"blue"</span>,<span class="variable">size</span>:<span class="string">"small"</span>,<span class="variable">shape</span>:<span class="string">"circle"</span>}</span><span class="xml">];
+});</span>
+</code></pre><p>MVVM的核心思想是：不再关注数据是如何呈现到页面的，由框架更新Model和View。</p>
+<p>ng也提供了自定义的ViewModel： directive(指令) ，代码如下：</p>
+<pre><code><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/1999/xhtml"</span> <span class="attribute">data-ng-app</span>=<span class="value">"demo"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=utf-8"</span> /&gt;</span>
+  <span class="tag">&lt;<span class="title">title</span>&gt;</span>ng demo<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://cdn.bootcss.com/angular.js/1.3.8/angular.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">body</span> <span class="attribute">data-ng-controller</span>=<span class="value">"demoController"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">hello</span> <span class="attribute">data-ng-model</span>=<span class="value">"text"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:;"</span>&gt;</span>i'm <span class="comment"></span><span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">hello</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="actionscript">
+    <span class="keyword">var</span> app = angular.module(<span class="string">'demo'</span>, []).controller(<span class="string">'demoController'</span>, <span class="function"><span class="keyword">function</span> <span class="params">($scope)</span> </span>{
+      $scope.text = <span class="string">'***'</span>;
+    }).directive(<span class="string">'hello'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{
+      <span class="comment">//编写hello指令</span>
+      <span class="keyword">return</span> {
+        restrict: <span class="string">'E'</span>,<span class="comment">//指定这个指令是Element类型的</span>
+        scope: { text: <span class="string">'=ngModel'</span> },<span class="comment">//指定对象</span>
+        link: <span class="function"><span class="keyword">function</span> <span class="params">($scope, $elem)</span> </span>{
+          <span class="comment">//注册事件</span>
+          $elem.on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{
+            <span class="comment">//修改数据，双向绑定</span>
+            $scope.text =
+              $scope.text === <span class="string">'***'</span> ? <span class="string">'linkFly'</span> : <span class="string">'***'</span>;
+            $scope.$apply();
+          });
+        }
+      };
+    });
+  </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><p>directive可以让你的代码插件化/组件化，当你想要完成一个日历插件，可以使用directive来实现，directive是ng中的ViewModel，再看ViewModel的本份：更新Model到View中。因为viewModel直面操作Model和View，所以所有的事件绑定、操作DOM的逻辑都应该在ViewModel/ng的directive中。</p>
+<p>再看我们之前MVVM的图：</p>
+<p>ViewModel实现的双向绑定原理：从外部环境接收Model，呈现到View。从View接收行为（web中是浏览器的事件，例如鼠标点击之类的）再更新Model。</p>
+<p>当理解了ViewModel的职责，我相信对于ng的directive理解将会很大。而数据的处理/加工，应该仍然留在Controller中。MVVM的本质也只是注入了一层ViewModel。</p>
+<p><strong>AngularJS带来的活力</strong>  </p>
+<p>其实主要源于ViewModel。</p>
+<p>初次接触ng的directive深感迷茫，很大程度上对MVVM不理解。因为ng的directive的行为太过组件化，过了很久才明白其实我们自己编写javascript也是组件化的，其实这也映射着更好的的web思想： Web components 。</p>
+<p>ng中的directive可以让那些编码中习惯瞎灌一通代码的小伙伴尝到组件化的甜头，前提是你们需要经历痛苦的思想转换。</p>
+<p>未来迟早要到来，Web components是趋势。</p>
+<p>ViewModel的思维颠覆了传统的javascript操作DOM的行为，迎合MVC的思想又能够让javascript的逻辑更加的清晰。为了迎接ViewModel，ECMAScript下下一个版本（ECMAScript 7，当前ECMAScript 5）准备了 Object.observe() ——监听/观察javascript对象：当被监听的对象发生变化，通知监听者，数据双向绑定的利器。</p>
+<p>结语</p>
+<p>其实如果能够理解ViewModel，那么MVVM框架中很多事情都将可以得到很明确的答案，多数时候我们总是在成型的编程思维上去敲代码，当引入了一个框架，就意味着你要接受它的思想，然而颠覆一个人的思想是一件很困难的事情，毕竟我们无法像盗梦空间里那样，悄悄注入一个想法，从此世界颠覆。</p>
+<p>jQuery如此的卓越也体现了这点，在你刚开始使用它的时候就发现它并没有侵入你的思想，你仍然可以用自己的思维写出自己的代码，不得不说jQuery的理念得以让其在今天大行其道——专注DOM。</p>
+<p>可能有人想说：”jQuery是库，不要跟框架并提。”</p>
+<p>我知道。只是感叹一下。</p>
+<p>出处： www.cnblogs.com/silin6/</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/angular/">angular</a><a href="/tags/前端/">前端</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2015/11/06/MVVM框架之AngularJs/" data-title="MVVM框架之AngularJs | Ye-Vincent&#39;Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/11/04/移动前端优化/"  title="浅谈移动前端优化">
+ <strong>NEXT:</strong><br/> 
+ <span>浅谈移动前端优化
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	
+	<div class="ds-thread" data-title="MVVM框架之AngularJs" data-thread-key="MVVM框架之AngularJs" data-author-key="叶文翔" data-url="http://yoursite.com/post/MVVM框架之AngularJs"></div>
+	
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+<div id="authorInfo">
+	
+		<div class="author-logo"></div>		
+	
+	<div class="social-list" class="clearfix">
+		
+		
+		
+		
+		
+	</div>
+</div>
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/angular/" title="angular">angular<sup>1</sup></a></li>
+		
+			<li><a href="/tags/优化/" title="优化">优化<sup>1</sup></a></li>
+		
+			<li><a href="/tags/前端/" title="前端">前端<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+      <li><a href="http://hexo.io" target="_blank" title="Hexo">Hexo</a></li>
+     
+    </ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">Tag Cloud</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/前端/" style="font-size: 20px;">前端</a>
+    </div>
+  </div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+    
+            <p class="copyright"> © 2015 
+		
+		<a href="http://yoursite.com" target="_blank" title="叶文翔">叶文翔</a>
+		
+            && Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> && Theme by <a href="http://gengbiao.me" target="_blank" title="coney">coney</a>
+            </div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"null"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+<script>
+    
+        var _bdImg = '4';
+    
+    window._bd_share_config={
+        "common":{
+            "bdSnsKey":{
+
+            },
+            "bdText":"",
+            "bdMini":"2",
+            "bdMiniList":[
+                "qzone",
+                "tsina",
+                "weixin",
+                "renren",
+                "tqq",
+                "tieba",
+                "douban",
+                "sqq",
+                "diandian",
+                "huaban",
+                "youdao",
+                "mail",
+                "ty",
+                "fbook",
+                "twi",
+                "linkedin",
+                "copy",
+                "print"
+            ],
+            "bdPic":"",
+            "bdStyle":"0",
+            "bdSize":"16"
+        },
+        "slide":{
+            "type":"slide",
+            "bdImg":_bdImg,
+            "bdPos":"right",
+            "bdTop":"350"
+        },
+        "image":{
+            "viewList":[
+                "weixin",
+                "qzone",
+                "tsina",
+                "renren",
+                "douban",
+                "tqq"
+            ],
+            "viewText":"分享：",
+            "viewSize":"16"
+        },
+        "selectShare":{
+            "bdContainerClass":null,
+            "bdSelectMiniList":[
+                "weixin",
+                "qzone",
+                "tsina",
+                "renren",
+                "douban",
+                "tqq"
+            ]
+        }
+    };
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'null', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>
+
