@@ -81,8 +81,8 @@
       <a href="http://yoursite.com" title="叶文翔">叶文翔</a>
     </p>
   <p class="article-time">
-    <time datetime="2015-11-06T12:10:15.116Z" itemprop="datePublished">2015-11-06</time>
-    更新日期:<time datetime="2015-11-06T12:10:15.116Z" itemprop="dateModified">2015-11-06</time>
+    <time datetime="2015-11-06T12:21:44.093Z" itemprop="datePublished">2015-11-06</time>
+    更新日期:<time datetime="2015-11-06T12:21:44.093Z" itemprop="dateModified">2015-11-06</time>
     
   </p>
 </header>
@@ -114,11 +114,15 @@
     // 展示到前台页面
 }</span>)</span><span class="list">()</span>
 </code></pre><p>而ng呢  看起来则优雅得多了</p>
-<pre><code><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">data-ng-repeat</span>=<span class="value">"item in datas"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="comment"></span> + <span class="comment"></span> + <span class="comment"></span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<pre><code><span class="xml"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">data-ng-repeat</span>=<span class="value">"item in datas"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="comment"></span>+<span class="comment"></span>+<span class="comment"></span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
 <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
-</code></pre><p>var app = angular.module(‘demo’, []).controller(‘demoController’, function ($scope) {<br>//ViewModel双向绑定<br>$scope.datas = [{color:”blue”,size:”small”,shape:”circle”}];<br>});</p>
-<p>MVVM的核心思想是：不再关注数据是如何呈现到页面的，由框架更新Model和View。</p>
+
+var app = angular.module('demo', []).controller('demoController', function ($scope) </span><span class="expression">{
+    /<span class="end-block">/ViewModel</span>双向绑定
+    $<span class="variable">scope.datas</span> = [{<span class="variable">color</span>:<span class="string">"blue"</span>,<span class="variable">size</span>:<span class="string">"small"</span>,<span class="variable">shape</span>:<span class="string">"circle"</span>}</span><span class="xml">];
+});</span>
+</code></pre><p>MVVM的核心思想是：不再关注数据是如何呈现到页面的，由框架更新Model和View。</p>
 <p>ng也提供了自定义的ViewModel： directive(指令) ，代码如下：</p>
 <pre><code><span class="doctype">&lt;!DOCTYPE html&gt;</span>
 <span class="tag">&lt;<span class="title">html</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/1999/xhtml"</span> <span class="attribute">data-ng-app</span>=<span class="value">"demo"</span>&gt;</span>
