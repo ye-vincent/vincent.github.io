@@ -15,7 +15,7 @@
     <meta name="description" content="CSS编写规范
 页面编码规范
 
-1.1. 统一使用 UTF-8 编码,用@charset “utf-8”指定页面编码。1.2. 全局字体设置：     windows 7系统：微软雅黑 Arial；     windows XP及以下：新宋体，宋体，Arial     MAC默认字体：Helveti">
+1.1. 统一使用 UTF-8 编码,用@charset “utf-8”指定页面编码。1.2. 全局字体设置：    windows 7系统：微软雅黑 Arial；    windows XP及以下：新宋体，宋体，Arial    MAC默认字体：Helvetica ">
     
     
     
@@ -49,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Ye-Vincent&#39;Blog">Ye-Vincent&#39;Blog</a></h1>
 				<a class="blog-motto">努力学代码，退休后天天打魔兽</a>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -63,7 +63,7 @@
 					
                                             <form class="search" action=http://zhannei.baidu.com/cse/search target="_blank">
                                             <label>Search</label>
-                                        <input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="Search"><br>
+                                        <input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
 					
 					</li>
 				</ul>
@@ -85,7 +85,7 @@
     </p>
   <p class="article-time">
     <time datetime="2015-11-14T01:36:24.000Z" itemprop="datePublished">2015-11-14</time>
-    Updated:<time datetime="2015-11-14T01:41:52.277Z" itemprop="dateModified">2015-11-14</time>
+    更新日期:<time datetime="2015-11-14T01:49:53.966Z" itemprop="dateModified">2015-11-14</time>
     
   </p>
 </header>
@@ -93,24 +93,22 @@
 		
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目錄</strong>
 		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS编写规范"><span class="toc-number">1.</span> <span class="toc-text">CSS编写规范</span></a></li></ol>
 		</div>
 		
 		<h1 id="CSS编写规范">CSS编写规范</h1><ol>
 <li>页面编码规范</li>
 </ol>
-<p>1.1. 统一使用 UTF-8 编码,用@charset “utf-8”指定页面编码。<br>1.2. 全局字体设置：<br>     windows 7系统：微软雅黑 Arial；<br>     windows XP及以下：新宋体，宋体，Arial<br>     MAC默认字体：Helvetica Neue和Helvetica Hiragino Sans GB。<br>     font-family:”Microsoft Yahei”,”Hiragino Sans GB”,”Helvetica Neue”,Helvetica,tahoma,arial,Verdana,sans-serif,”WenQuanYi Micro Hei”,”\5B8B\4F53”;<br>1.3. 中文字体使用编码转换。<br>1.4. 推荐使用216web安全色。</p>
-<p>2.属性写在一行内，属性之间、属性名和值之间以及属性与“{}”之间应减少空格，去掉最后一个“;”，例如：<br> .class{width:200px;height:100px}</p>
+<p>1.1. 统一使用 UTF-8 编码,用@charset “utf-8”指定页面编码。<br>1.2. 全局字体设置：<br>    windows 7系统：微软雅黑 Arial；<br>    windows XP及以下：新宋体，宋体，Arial<br>    MAC默认字体：Helvetica Neue和Helvetica Hiragino Sans GB。<br>    font-family:”Microsoft Yahei”,”Hiragino Sans GB”,”Helvetica Neue”,Helvetica,tahoma,arial,Verdana,sans-serif,”WenQuanYi Micro Hei”,”\5B8B\4F53”;<br>1.3. 中文字体使用编码转换。<br>1.4. 推荐使用216web安全色。</p>
+<p>2,属性写在一行内，属性之间、属性名和值之间以及属性与“{}”之间应减少空格，去掉最后一个“;”，例如：  .class{width:200px;height:100px}</p>
 <ol>
-<li><p>属性的书写顺序：<br>3.1. 按照元素模型由外及内，由整体到细节书写，大致分为五组：<br>位置：position,left,right,float<br>盒模型属性：display,margin,padding,width,height<br>边框与背景：border,background<br>段落与文本：line-height,text-indent,font,color,text-decoration,…<br>其他属性：overflow,cursor,visibility,…<br>3.2. 针对特殊浏览器的属性，应写在标准属性之前，例如：-webkit-box-shadow:;-moz-box-shadow:;box-shaow:;</p>
-</li>
-<li><p>带有前缀的属性，单独一行，通过缩进，让每个属性的值垂直对齐，方便编辑维护。</p>
-</li>
+<li>属性的书写顺序：<br>3.1. 按照元素模型由外及内，由整体到细节书写，大致分为五组：<br>位置：position,left,right,float<br>盒模型属性：display,margin,padding,width,height<br>边框与背景：border,background<br>段落与文本：line-height,text-indent,font,color,text-decoration,…<br>其他属性：overflow,cursor,visibility,…<br>3.2. 针对特殊浏览器的属性，应写在标准属性之前，例如：-webkit-box-shadow:;-moz-box-shadow:;box-shaow:;</li>
+<li>带有前缀的属性，单独一行，通过缩进，让每个属性的值垂直对齐，方便编辑维护。</li>
 <li>谨慎添加新的选择符规则，尤其不可滥用 id，尽可能继承和复用已有样式</li>
 <li>选择符、属性、值均用小写（格式的颜色值除外），缩写的选择符名称须说明缩写前的全称，例如 .cl -&gt; Clearfix</li>
 <li>避免使用各种CSS Hack，如需对 IE 进行特殊定义。</li>
-<li>勿使用冗余低效的 CSS 写法，例如：ul li a span{… }</li>
+<li>勿使用冗余低效的 CSS 写法，例如：ul li a span{… }。</li>
 <li>慎用 !important</li>
 <li>建议使用具有语义化的classname或id。<br>11.避免使用兼容性不好的使用滤镜<br>12.开发过程中的未定事项，须用 [!] 标出，以便于后续讨论整理。<br>13.注释格式，统一使用双斜杠加*。<br>14.上下模块之间的间距统一使用下一个模块的margin-top来实现，好处是：如果没有下一个模块也不会多出一段空隙。<br>15.hover，selected，disabled，current等具有特定意义的请勿直接占用。<br>16.:link :visited :hover :active书写顺序 L-V-H-A，速记：LoVe（喜欢）HAte（讨厌）。<br>17.不要使用 @import</li>
 </ol>
@@ -157,15 +155,15 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目錄</strong>
   <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS编写规范"><span class="toc-number">1.</span> <span class="toc-text">CSS编写规范</span></a></li></ol>
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 <div id="authorInfo">
 	
@@ -184,7 +182,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">標簽</p>
 		<ul class="clearfix">
 		
 			<li><a href="/tags/angular/" title="angular">angular<sup>1</sup></a></li>
@@ -202,7 +200,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情鏈接</p>
     <ul>
       <li><a href="http://hexo.io" target="_blank" title="Hexo">Hexo</a></li>
      
@@ -211,12 +209,12 @@
 
 
   <div class="rsspart">
-	<a href="atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="atom.xml" target="_blank" title="rss">RSS 訂閱</a>
 </div>
 
   
   <div class="tagcloudlist">
-    <p class="asidetitle">Tag Cloud</p>
+    <p class="asidetitle">標簽雲</p>
     <div class="tagcloudlist clearfix">
        <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/前端/" style="font-size: 20px;">前端</a> <a href="/tags/前端-css/" style="font-size: 10px;">前端,css</a>
     </div>
