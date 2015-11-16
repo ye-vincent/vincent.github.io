@@ -7,15 +7,14 @@
   <meta name="360-site-verification" content="67fbcc5a67f4c65c057315b28fa0b2c8" />
 <meta name="google-site-verification" content="2GzxQ0VtXwTSUdmGm6DzcmhTzM_I9QmzCb_pzpMzD88" />
   
-    <title>CSS编写规范 | Ye-Vincent&#39;Blog</title>
+    <title>函数表达式和函数声明 | Ye-Vincent&#39;Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="叶文翔">
     
-    <meta name="description" content="CSS编写规范
-页面编码规范
-
-1.1. 统一使用 UTF-8 编码,用@charset “utf-8”指定页面编码。1.2. 全局字体设置：    windows 7系统：微软雅黑 Arial；    windows XP及以下：新宋体，宋体，Arial    MAC默认字体：Helvetica ">
+    <meta name="description" content="函数表达式和函数声明在ECMAScript中，创建函数的最常用的两个方法是函数表达式和函数声明，两者期间的区别是有点晕，因为ECMA规范只明确了一点：函数声明必须带有标示符（Identifier）（就是大家常说的函数名称），而函数表达式则可以省略这个标示符：
+　　函数声明:
+　　function 函">
     
     
     
@@ -77,15 +76,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/11/14/CSS编写规范/" title="CSS编写规范" itemprop="url">CSS编写规范</a>
+      <a href="/2015/11/16/函数表达式和函数声明/" title="函数表达式和函数声明" itemprop="url">函数表达式和函数声明</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://yoursite.com" title="叶文翔">叶文翔</a>
     </p>
   <p class="article-time">
-    <time datetime="2015-11-14T01:36:24.000Z" itemprop="datePublished">2015-11-14</time>
-    更新日期:<time datetime="2015-11-14T01:49:53.966Z" itemprop="dateModified">2015-11-14</time>
+    <time datetime="2015-11-16T02:37:36.000Z" itemprop="datePublished">2015-11-16</time>
+    更新日期:<time datetime="2015-11-16T02:45:45.607Z" itemprop="dateModified">2015-11-16</time>
     
   </p>
 </header>
@@ -94,39 +93,65 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目錄</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS编写规范"><span class="toc-number">1.</span> <span class="toc-text">CSS编写规范</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#函数表达式和函数声明"><span class="toc-number">1.</span> <span class="toc-text">函数表达式和函数声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#命名函数表达式"><span class="toc-number">1.1.</span> <span class="toc-text">命名函数表达式</span></a></li></ol></li></ol>
 		</div>
 		
-		<h1 id="CSS编写规范">CSS编写规范</h1><ol>
-<li>页面编码规范</li>
-</ol>
-<p>1.1. 统一使用 UTF-8 编码,用@charset “utf-8”指定页面编码。<br>1.2. 全局字体设置：<br>    windows 7系统：微软雅黑 Arial；<br>    windows XP及以下：新宋体，宋体，Arial<br>    MAC默认字体：Helvetica Neue和Helvetica Hiragino Sans GB。<br>    font-family:”Microsoft Yahei”,”Hiragino Sans GB”,”Helvetica Neue”,Helvetica,tahoma,arial,Verdana,sans-serif,”WenQuanYi Micro Hei”,”\5B8B\4F53”;<br>1.3. 中文字体使用编码转换。<br>1.4. 推荐使用216web安全色。</p>
-<p>2,属性写在一行内，属性之间、属性名和值之间以及属性与“{}”之间应减少空格，去掉最后一个“;”，例如：  .class{width:200px;height:100px}</p>
-<ol>
-<li>属性的书写顺序：<br>3.1. 按照元素模型由外及内，由整体到细节书写，大致分为五组：<br>位置：position,left,right,float<br>盒模型属性：display,margin,padding,width,height<br>边框与背景：border,background<br>段落与文本：line-height,text-indent,font,color,text-decoration,…<br>其他属性：overflow,cursor,visibility,…<br>3.2. 针对特殊浏览器的属性，应写在标准属性之前，例如：-webkit-box-shadow:;-moz-box-shadow:;box-shaow:;</li>
-<li>带有前缀的属性，单独一行，通过缩进，让每个属性的值垂直对齐，方便编辑维护。</li>
-<li>谨慎添加新的选择符规则，尤其不可滥用 id，尽可能继承和复用已有样式</li>
-<li>选择符、属性、值均用小写（格式的颜色值除外），缩写的选择符名称须说明缩写前的全称，例如 .cl -&gt; Clearfix</li>
-<li>避免使用各种CSS Hack，如需对 IE 进行特殊定义。</li>
-<li>勿使用冗余低效的 CSS 写法，例如：ul li a span{… }。</li>
-<li>慎用 !important</li>
-<li>建议使用具有语义化的classname或id。<br>11.避免使用兼容性不好的使用滤镜<br>12.开发过程中的未定事项，须用 [!] 标出，以便于后续讨论整理。<br>13.注释格式，统一使用双斜杠加*。<br>14.上下模块之间的间距统一使用下一个模块的margin-top来实现，好处是：如果没有下一个模块也不会多出一段空隙。<br>15.hover，selected，disabled，current等具有特定意义的请勿直接占用。<br>16.:link :visited :hover :active书写顺序 L-V-H-A，速记：LoVe（喜欢）HAte（讨厌）。<br>17.不要使用 @import</li>
-</ol>
+		<h1 id="函数表达式和函数声明">函数表达式和函数声明</h1><p>在ECMAScript中，创建函数的最常用的两个方法是函数表达式和函数声明，两者期间的区别是有点晕，因为ECMA规范只明确了一点：函数声明必须带有标示符（Identifier）（就是大家常说的函数名称），而函数表达式则可以省略这个标示符：</p>
+<p>　　函数声明:</p>
+<p>　　function 函数名称 (参数：可选){ 函数体 }</p>
+<p>　　函数表达式：</p>
+<p>　　function 函数名称（可选）(参数：可选){ 函数体 }</p>
+<p>所以，可以看出，如果不声明函数名称，它肯定是表达式，可如果声明了函数名称的话，如何判断是函数声明还是函数表达式呢？ECMAScript是通过上下文来区分的，如果function foo(){}是作为赋值表达式的一部分的话，那它就是一个函数表达式，如果function foo(){}被包含在一个函数体内，或者位于程序的最顶部的话，那它就是一个函数声明。  </p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span></span>{} <span class="comment">// 声明，因为它是程序的一部分 </span>
+
+<span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span></span>{}; <span class="comment">// 表达式，因为它是赋值表达式的一部分</span>
+
+<span class="keyword">new</span> <span class="function"><span class="keyword">function</span> <span class="title">bar</span><span class="params">()</span></span>{}; <span class="comment">// 表达式，因为它是new表达式</span>
+
+(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+    <span class="function"><span class="keyword">function</span> <span class="title">bar</span><span class="params">()</span></span>{} <span class="comment">// 声明，因为它是函数体的一部分</span>
+})();
+</code></pre><p>还有一种函数表达式不太常见，就是被括号括住的(function foo(){})，他是表达式的原因是因为括号 ()是一个分组操作符，它的内部只能包含表达式，我们来看几个例子：</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span></span>{} <span class="comment">// 函数声明</span>
+(<span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span></span>{}); <span class="comment">// 函数表达式：包含在分组操作符内</span>
+</code></pre><h2 id="命名函数表达式">命名函数表达式</h2><p>提到命名函数表达式，理所当然，就是它得有名字，前面的例子var bar = function foo(){};就是一个有效的命名函数表达式，但有一点需要记住：这个名字只在新定义的函数作用域内有效，因为规范规定了标示符不能在外围的作用域内有效：  </p>
+<pre><code><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>{
+    <span class="keyword">return</span> <span class="keyword">typeof</span> foo; <span class="comment">// foo是在内部作用域内有效</span>
+  };
+  <span class="comment">// foo在外部用于是不可见的</span>
+  <span class="built_in">console</span>.log(<span class="keyword">typeof</span> foo); <span class="comment">// "undefined"</span>
+  <span class="built_in">console</span>.log(f()); <span class="comment">// "function"</span>
+
+
+<span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>{
+<span class="keyword">return</span> foo; <span class="comment">// foo是在内部作用域内有效</span>
+};
+<span class="comment">// foo在外部用于是不可见的</span>
+<span class="built_in">console</span>.log(<span class="keyword">typeof</span> foo); <span class="comment">// "undefined"</span>
+<span class="built_in">console</span>.log( f()==f); <span class="comment">// "function"</span>
+<span class="built_in">console</span>.log(f.name);<span class="comment">//foo</span>
+
+<span class="keyword">var</span> f=<span class="function"><span class="keyword">function</span> <span class="title">g</span>(<span class="params"></span>)</span>{
+<span class="keyword">return</span> <span class="number">23</span>;
+ }
+ <span class="built_in">console</span>.log( <span class="keyword">typeof</span> g);<span class="comment">//undefined</span>
+<span class="built_in">console</span>.log(g());<span class="comment">//Uncaught ReferenceError: g is not defined</span>
+<span class="built_in">console</span>.log( g);<span class="comment">//Uncaught ReferenceError: g is not defined</span>
+<span class="built_in">console</span>.log(f);<span class="comment">//function g()</span>
+<span class="built_in">console</span>.log(f());<span class="comment">//23</span>
+<span class="built_in">console</span>.log(f.name);<span class="comment">//g</span>
+</code></pre><p>既然，这么要求，那命名函数表达式到底有啥用啊？为啥要取名？</p>
+<p>正如我们开头所说：给它一个名字就是可以让调试过程更方便，因为在调试的时候，如果在调用栈中的每个项都有自己的名字来描述，那么调试过程就太爽了，感受不一样嘛。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/前端-css/">前端,css</a>
-  </div>
 
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://yoursite.com/2015/11/14/CSS编写规范/" data-title="CSS编写规范 | Ye-Vincent&#39;Blog" data-tsina="null" class="share clearfix">
+  <div data-url="http://yoursite.com/2015/11/16/函数表达式和函数声明/" data-title="函数表达式和函数声明 | Ye-Vincent&#39;Blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -135,19 +160,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/11/16/函数表达式和函数声明/" title="函数表达式和函数声明">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  函数表达式和函数声明</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/11/09/javascript中的Fuction类型详解/"  title="javascript中的Fuction类型详解">
+<a href="/2015/11/14/CSS编写规范/"  title="CSS编写规范">
  <strong>NEXT:</strong><br/> 
- <span>javascript中的Fuction类型详解
+ <span>CSS编写规范
 </span>
 </a>
 </div>
@@ -157,7 +174,7 @@
 	
 <section class="comment">
 	
-	<div class="ds-thread" data-title="CSS编写规范" data-thread-key="CSS编写规范" data-author-key="叶文翔" data-url="http://yoursite.com/post/CSS编写规范"></div>
+	<div class="ds-thread" data-title="函数表达式和函数声明" data-thread-key="函数表达式和函数声明" data-author-key="叶文翔" data-url="http://yoursite.com/post/函数表达式和函数声明"></div>
 	
 </section>
 
@@ -167,7 +184,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目錄</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS编写规范"><span class="toc-number">1.</span> <span class="toc-text">CSS编写规范</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#函数表达式和函数声明"><span class="toc-number">1.</span> <span class="toc-text">函数表达式和函数声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#命名函数表达式"><span class="toc-number">1.1.</span> <span class="toc-text">命名函数表达式</span></a></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
