@@ -7,15 +7,16 @@
   <meta name="360-site-verification" content="67fbcc5a67f4c65c057315b28fa0b2c8" />
 <meta name="google-site-verification" content="2GzxQ0VtXwTSUdmGm6DzcmhTzM_I9QmzCb_pzpMzD88" />
   
-    <title>浅谈Websocket和Ajax轮询和长连接 | Ye-Vincent&#39;Blog</title>
+    <title>你认为你了解Javascript？ | Ye-Vincent&#39;Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="叶文翔">
     
-    <meta name="description" content="最近看到了一些介绍Websocket的文章，觉得挺有用，所以在这里将自己的对其三者的理解记录一下。
-1.什么是Websocket
-　　Websocket是HTML5中提出的新的协议，注意，这里是协议，可以实现客户端与服务器端的通信，实现服务器的推送功能。
-2.Websocket和HTTP协议是什么关">
+    <meta name="description" content="这里有5个小脚本，有助于你真正理解JavaScript核心–闭包和作用域。没有在控制台运行之前，尝试回答每个案例中会弹出什么内容，然后你可以创建一个测试文件去核对你的答案。你准备好了吗？  
+1、
+
+   1: if (!(&quot;a&quot; in window)) {
+   2:     var a = 1;">
     
     
     
@@ -77,15 +78,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/11/21/浅谈Websocket和Ajax轮询和长连接/" title="浅谈Websocket和Ajax轮询和长连接" itemprop="url">浅谈Websocket和Ajax轮询和长连接</a>
+      <a href="/2015/11/27/你认为你了解Javascript/" title="你认为你了解Javascript？" itemprop="url">你认为你了解Javascript？</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://yoursite.com" title="叶文翔">叶文翔</a>
     </p>
   <p class="article-time">
-    <time datetime="2015-11-21T01:23:58.000Z" itemprop="datePublished">2015-11-21</time>
-    更新日期:<time datetime="2015-11-21T01:26:07.480Z" itemprop="dateModified">2015-11-21</time>
+    <time datetime="2015-11-27T03:51:25.000Z" itemprop="datePublished">2015-11-27</time>
+    更新日期:<time datetime="2015-11-27T03:59:02.306Z" itemprop="dateModified">2015-11-27</time>
     
   </p>
 </header>
@@ -97,27 +98,43 @@
 		
 		</div>
 		
-		<p>最近看到了一些介绍Websocket的文章，觉得挺有用，所以在这里将自己的对其三者的理解记录一下。</p>
-<p>1.什么是Websocket</p>
-<p>　　Websocket是HTML5中提出的新的协议，注意，这里是协议，可以实现客户端与服务器端的通信，实现服务器的推送功能。</p>
-<p>2.Websocket和HTTP协议是什么关系</p>
-<p>　　简单来说，Websocket和HTTP有关系，但是关系不大，它们的关系类似于数学中的交集,如下图（借用的Ovear的图）。Websocket借用了HTTP协议来完成一部分握手过程。</p>
-<p>　　</p>
-<p>3.Websocket的握手过程</p>
-<p>　　当客户端要建立Websocket连接时，其向服务器发送：</p>
-<pre><code><span class="request">GET <span class="string">/chat</span> HTTP/1.1</span>
-<span class="attribute">Host</span>: <span class="string">xxx.com</span>
-<span class="attribute">Upgrade</span>: <span class="string">websocket</span>
-<span class="attribute">Connection</span>: <span class="string">Upgrade</span>
-<span class="attribute">Sec-WebSocket-Key</span>: <span class="string">x3JJHMbDL1EzLkh9GBhXDw==</span>
-<span class="attribute">Sec-WebSocket-Protocol</span>: <span class="string">chat, superchat</span>
-<span class="attribute">Sec-WebSocket-Version</span>: <span class="string">13</span>
-<span class="attribute">Origin</span>: <span class="string">http://xxx.com</span>
-</code></pre><p>其中，Upgrade: websocket和Connection: Upgrade告诉服务器，我要建立的是websocket连接；Sec-WebSocket-Key部分服务器加密后还要返回浏览器，确保建立的是websocket连接；Sec-WebSocket-Version: 13是websocket的版本号。<br>当服务器接收到上述包后，会返回一下内容：<br>    HTTP/1.1 101 Switching Protocols<br>    Upgrade: websocket<br>    Connection: Upgrade<br>    Sec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk=<br>    Sec-WebSocket-Protocol: chat<br>　它告诉客户端，我已经切换到websocket协议了，Sec-WebSocket-Accept就是Sec-WebSocket-Key加密后的内容，这样，一个websocket连接就建立了。  </p>
-<p>4.Websocket怎么工作的<br>　客户端：我要建立websocket连接<br>　服务器端：好的，已经切换到websocket协议，websocket连接已经建立<br>　客户端：有什么消息要及时告诉（推送）我<br>　服务器端：好的<br>　服务器端：xxxxxx<br>　服务器端：yyyyyyy<br>　。。。。。<br>　其优点就是，只要建立一次连接，就可以连续不断的得到服务器推送的消息，节省带宽和服务器端的压力。  </p>
-<p>5.Ajax轮询怎么实现的<br>　　其实，这个大多数小伙伴都知道了，ajax轮询模拟长连接就是每个一段时间（0.5s）就向服务器发起ajax请求，查询服务器端是否有数据更新<br>　　　　　　客户端：有没有新消息<br>　　　　　　服务器端：没有。。<br>　　　　　　客户端：有没有新消息<br>　　　　　　服务器端：有，xxxxx<br>　　　　　　客户端：有没有新消息<br>　　　　　　服务器端：没有。。<br>　　　　　　客户端：有没有新消息<br>　　　　　　服务器端：没有。。<br>　　　　　　。。。。。。<br>　　其缺点显而易见，每次都要建立HTTP连接，即使需要传输的数据非常少，所以这样很浪费带宽；同时，这个过程是被动性的，即不是服务器主动推送的。</p>
-<p>6.长连接（long pull）<br>　　　　　　客户端：有没有新信息（Request）<br>　　　　　　服务端：没有，<br>　　　　　　（时间一直的流逝。。。，当等待到有消息的时候）<br>　　　　　　服务器端：给你xxxx（Response）<br>　　　　　　客户端：有没有新消息（Request）<br>　　　　　　。。。。。<br>　　其缺点也是显而易见的，同ajax轮询一样，也是每次都要建立HTTP连接，也都是被动的。而且这种方法对服务器的并行要求比较大，因为在没有消息的时候，连接照样保持，而这时需要其它信息是又要建立新的连接（就连接保持中）。</p>
-<p>7.参考：<br>　　a.百度<br>　　b.<a href="http://www.zhihu.com/question/20215561/answer/40316953" target="_blank" rel="external">http://www.zhihu.com/question/20215561/answer/40316953</a></p>
+		<p>这里有5个小脚本，有助于你真正理解JavaScript核心–闭包和作用域。没有在控制台运行之前，尝试回答每个案例中会弹出什么内容，然后你可以创建一个测试文件去核对你的答案。你准备好了吗？  </p>
+<pre><code><span class="number">1</span>、
+
+   <span class="number">1</span>: <span class="keyword">if</span> (!(<span class="string">"a"</span> in window)) {
+   <span class="number">2</span>:     var a = <span class="number">1</span>;
+   <span class="number">3</span>: }
+   <span class="number">4</span>: alert(a);
+<span class="number">2</span>、
+
+   <span class="number">1</span>: var a = <span class="number">1</span>,
+   <span class="number">2</span>:     b = <span class="function">function <span class="title">a</span><span class="params">(x)</span> </span>{
+   <span class="number">3</span>:         <span class="function">x &amp;&amp; <span class="title">a</span><span class="params">(--x)</span></span>;
+   <span class="number">4</span>:     };
+   <span class="number">5</span>: alert(a);
+<span class="number">3</span>、
+
+   <span class="number">1</span>: <span class="function">function <span class="title">a</span><span class="params">(x)</span> </span>{
+   <span class="number">2</span>:     <span class="keyword">return</span> x * <span class="number">2</span>;
+   <span class="number">3</span>: }
+   <span class="number">4</span>: var a;
+   <span class="number">5</span>: alert(a);
+<span class="number">4</span>、
+
+   <span class="number">1</span>: <span class="function">function <span class="title">b</span><span class="params">(x, y, a)</span> </span>{
+   <span class="number">2</span>:     arguments[<span class="number">2</span>] = <span class="number">10</span>;
+   <span class="number">3</span>:     alert(a);
+   <span class="number">4</span>: }
+   <span class="number">5</span>: b(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);
+<span class="number">5</span>、
+
+   <span class="number">1</span>: <span class="function">function <span class="title">a</span><span class="params">()</span> </span>{
+   <span class="number">2</span>:     alert(<span class="keyword">this</span>);
+   <span class="number">3</span>: }
+   <span class="number">4</span>: a.call(null);
+</code></pre><p>我的预测答案分别是：undefined、1、不知道、10、null</p>
+<p>答案在本文末尾，看答案之前，你敢留下你的猜测吗？</p>
+<p>正确答案：1、undefined   2、1   3、function a(x){ return x * 2}   4、10  5、[object window]</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -127,7 +144,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://yoursite.com/2015/11/21/浅谈Websocket和Ajax轮询和长连接/" data-title="浅谈Websocket和Ajax轮询和长连接 | Ye-Vincent&#39;Blog" data-tsina="null" class="share clearfix">
+  <div data-url="http://yoursite.com/2015/11/27/你认为你了解Javascript/" data-title="你认为你了解Javascript？ | Ye-Vincent&#39;Blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -136,19 +153,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/11/27/你认为你了解Javascript/" title="你认为你了解Javascript？">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  你认为你了解Javascript？</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/11/16/函数表达式和函数声明/"  title="函数表达式和函数声明">
+<a href="/2015/11/21/浅谈Websocket和Ajax轮询和长连接/"  title="浅谈Websocket和Ajax轮询和长连接">
  <strong>NEXT:</strong><br/> 
- <span>函数表达式和函数声明
+ <span>浅谈Websocket和Ajax轮询和长连接
 </span>
 </a>
 </div>
@@ -158,7 +167,7 @@
 	
 <section class="comment">
 	
-	<div class="ds-thread" data-title="浅谈Websocket和Ajax轮询和长连接" data-thread-key="浅谈Websocket和Ajax轮询和长连接" data-author-key="叶文翔" data-url="http://yoursite.com/post/浅谈Websocket和Ajax轮询和长连接"></div>
+	<div class="ds-thread" data-title="你认为你了解Javascript？" data-thread-key="你认为你了解Javascript" data-author-key="叶文翔" data-url="http://yoursite.com/post/你认为你了解Javascript"></div>
 	
 </section>
 
